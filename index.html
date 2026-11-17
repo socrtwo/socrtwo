@@ -55,7 +55,7 @@
 <main>
   <header>
     <h1>✨ socrtwo · Projects</h1>
-    <p class="tagline">Open-source apps, tools, and SourceForge migrations. Click any card to launch its live page.</p>
+    <p class="tagline">Open-source apps, tools, and SourceForge migrations. Open a project's live page where it has one, or its source.</p>
     <div class="stats" id="stats"></div>
   </header>
   <div class="toolbar">
@@ -93,15 +93,18 @@ function render(){
     const stars=r.stargazers_count?`★ ${r.stargazers_count}`:'';
     const updated=`updated ${fmtDate(r.pushed_at)}`;
     const meta=[dot,stars,updated].filter(Boolean).map(x=>`<span>${x}</span>`).join('');
-    const pageUrl=`https://${OWNER}.github.io/${r.name}/`;
+    // Only offer a live link when one exists: the repo's own homepage, or
+    // its GitHub Pages site. Server-side projects have neither.
+    const pageUrl=/^https?:\/\//.test(r.homepage||'')?r.homepage:(r.has_pages?`https://${OWNER}.github.io/${r.name}/`:'');
+    const liveBtn=pageUrl?`<a class="btn primary" href="${encodeURI(pageUrl)}" target="_blank" rel="noopener">🌐 Live page</a>`:'';
     const desc=(r.description||'').replace(/[<>&]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;"}[c]));
     return `<div class="card">
       <div class="card-name">${r.name} ${tag}</div>
       <p class="card-desc">${desc||'<em style="opacity:.5">No description</em>'}</p>
       <div class="meta">${meta}</div>
       <div class="actions">
-        <a class="btn primary" href="${pageUrl}" target="_blank" rel="noopener">🌐 Live page</a>
-        <a class="btn" href="${r.html_url}" target="_blank" rel="noopener">Source</a>
+        ${liveBtn}
+        <a class="btn${liveBtn?'':' primary'}" href="${r.html_url}" target="_blank" rel="noopener">Source</a>
       </div>
     </div>`;
   }).join('');
