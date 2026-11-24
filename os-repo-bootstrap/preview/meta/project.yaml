@@ -1,0 +1,36 @@
+name: annes-os
+display_name: "Anne's OS"
+status: planning            # planning | alpha | beta | stable
+base: debian-13-trixie
+architectures: [amd64, arm64, i386-lite]
+desktop: { default: kde-plasma-6, lite: xfce }
+targets:
+  - { id: pc-iso,        kind: bare-metal, arch: amd64 }
+  - { id: arm64-iso,     kind: bare-metal, arch: arm64 }
+  - { id: raspberry-pi,  kind: bare-metal, arch: arm64, models: [pi4, pi400, pi5, pi500] }
+  - { id: windows-wsl2,  kind: subsystem,  arch: [amd64, arm64] }
+  - { id: windows-vm,    kind: vm,         formats: [vhdx, ova] }
+  - { id: macos-utm,     kind: vm,         arch: [arm64, amd64] }
+  - { id: android-termux, kind: container, arch: arm64, fidelity: partial }
+  - { id: android-avf,   kind: vm,         arch: arm64, fidelity: to-validate }
+  - { id: ios-utm-se,    kind: emulation,  fidelity: low }
+  - { id: web-cloud,     kind: remote-desktop, formats: [qcow2, ami, oci] }
+  - { id: web-webvm,     kind: in-browser-vm, arch: i386-lite }
+estimate:
+  as_of: 2026-11-24
+  effort: medium
+  base_tasks: 479
+  models:
+    claude-opus-5-5:
+      effective_tasks: 647
+      usd: { low: 2980, expected: 4440, high: 6660 }
+      agent_hours: 270
+      review_hours: 108
+      calendar_weeks: [11, 16]
+    claude-fable-5-2:
+      effective_tasks: 551
+      usd: { low: 4580, expected: 6840, high: 10260 }
+      agent_hours: 275
+      review_hours: 64
+      calendar_weeks: [8, 12]
+roadmap_file: ROADMAP.md

@@ -1,0 +1,9 @@
+/out/
+/cache/
+*.iso
+*.img
+*.img.xz
+*.qcow2
+*.vhdx
+*.wsl
+*.tar.zst
