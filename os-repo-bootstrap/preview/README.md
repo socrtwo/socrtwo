@@ -1,4 +1,4 @@
-# Anne's OS (working name)
+# Anne's OS
 
 A Debian 13 ("trixie")–based Linux distribution whose single goal is to **run every
 socrtwo program, in some version, on every device the author owns** — PCs, Raspberry Pi,

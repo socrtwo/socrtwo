@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/env bash
-# termux-create-repo.sh — scaffold the metadata-only repository for "Anne's OS"
-# (placeholder name) and publish it to GitHub with topics and roadmap milestones.
+# termux-create-repo.sh — scaffold the metadata-only repository for Anne's OS
+# and publish it to GitHub with topics and roadmap milestones.
 #
 # Usage (Termux):
 #   bash termux-create-repo.sh               # write files, git init, create GitHub repo
@@ -28,7 +28,7 @@ cd "$TARGET_DIR"
 
 # ---------------------------------------------------------------- README.md
 cat > README.md <<'EOF'
-# Anne's OS (working name)
+# Anne's OS
 
 A Debian 13 ("trixie")–based Linux distribution whose single goal is to **run every
 socrtwo program, in some version, on every device the author owns** — PCs, Raspberry Pi,
