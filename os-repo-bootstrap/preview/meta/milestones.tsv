@@ -1,0 +1,8 @@
+Phase 0 — Foundations	7	CI builds empty Debian rootfs for amd64+arm64
+Phase 1 — Base image	21	Bootable amd64 ISO + arm64 image to desktop in QEMU
+Phase 2 — Compatibility layers	42	Wine, Waydroid, all runtimes pass smoke matrix
+Phase 3 — App catalog	63	All 71 socrtwo repos install+launch or N/A with reason
+Phase 4 — Platform delivery	84	Every platform-table row produces a signed artifact
+Phase 5 — Desktop & updater	91	Install → update → app install with no terminal
+Phase 6 — QA & hardening	105	Automated tests green on all targets; SBOM published
+Phase 7 — 1.0 release	112	Release notes, website, per-platform install guides
